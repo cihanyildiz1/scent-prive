@@ -20,15 +20,13 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // Active nav link on scroll
 const sections = [
-  { id: 'collection', navId: 'nav-collection' },
-  { id: 'identity',   navId: 'nav-identity'   }
+  { id: 'collection', navId: 'nav-collection' }
 ];
 
 const navObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       document.querySelectorAll('.nav-links a').forEach(a => {
-        // Ignorera varukorg från scroll-styling
         if (a.id !== 'nav-cart') {
           a.style.color = '';
         }

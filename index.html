@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scent Privé — Exklusiva Parfymoljor & Musk</title>
-  <meta name="description" content="Premium doftoljor och musk för dig som vill lukta dyrt utan att betala överpris. Koncentrerade, långvariga och eleganta dofter från Scent Privé." />
+  <title>Scent Privé</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -18,13 +17,11 @@
       <div class="nav-links nav-left">
         <a href="#hero" id="nav-home">Hem</a>
         <a href="#collection" id="nav-collection">Dofter</a>
-        <a href="#identity" id="nav-identity">Om oss</a>
       </div>
       <a href="#hero" class="nav-logo" id="nav-logo-link">
         <img src="assets/images/logo.png" alt="Scent Privé" id="nav-logo-img" />
       </a>
       <div class="nav-links nav-right">
-        <a href="#footer" id="nav-contact">Kontakt</a>
         <a href="#" id="nav-cart" class="nav-cart-link">Varukorg (0)</a>
       </div>
     </div>
@@ -33,83 +30,24 @@
   <!-- ─── 1. HERO ─── -->
   <section id="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow" id="hero-eyebrow">Parfymoljor &amp; Musk</p>
       <h1 class="hero-title" id="hero-title">Du blir<br>ihågkommen.</h1>
       <p class="hero-sub" id="hero-sub">En doft ska inte bara märkas.<br>Den ska stanna kvar.</p>
       
       <div class="hero-ctas" id="hero-ctas">
-        <a href="#collection" class="btn-primary" id="hero-cta-shop">Upptäck dofterna</a>
-        <a href="#collection" class="btn-outline" id="hero-cta-explore">Se kollektionen</a>
+        <a href="#collection" class="btn-primary btn-large" id="hero-cta-explore">Se kollektionen</a>
       </div>
-      <p class="urgency-text">Begränsat antal vid lansering</p>
-
     </div>
     <div class="hero-right" id="hero-right">
       <div class="hero-img-frame">
-        <img src="assets/images/hero-mockup.png" alt="Scent Privé parfymolja" id="hero-product-img" />
+        <img src="assets/images/hero-mockup.png" alt="Scent Privé" id="hero-product-img" />
       </div>
     </div>
   </section>
 
-  <!-- ─── 2. VALUE BAR (Tydlig Value Efter Hero) ─── -->
-  <section id="value-bar">
-    <div class="value-bar-inner">
-      <span>Lång hållbarhet</span>
-      <span class="dot">·</span>
-      <span>Smidigt roll-on format</span>
-      <span class="dot">·</span>
-      <span>Premium känsla</span>
-      <span class="dot">·</span>
-      <span>Prisvärd lyx</span>
-    </div>
-  </section>
-
-  <!-- ─── 3. DIREKT HOOK / FOKUS ─── -->
-  <section id="focus">
-    <div class="focus-inner">
-      <div class="focus-visual reveal">
-        <img src="assets/images/lifestyle.png" alt="Lifestyle Scent Privé" class="focus-img" />
-      </div>
-      <div class="focus-text reveal">
-        <span class="section-label">Signaturdoft</span>
-        <h2>En doft som märks.</h2>
-        <p>Håller länge. Får komplimanger. Enkel att bära med dig.</p>
-        <div class="focus-price-row">
-          <span class="focus-price">Från 129 kr</span>
-        </div>
-        <a href="#collection" class="btn-primary btn-large">Upptäck dofterna</a>
-        <p class="urgency-text-hook">Populära dofter säljer snabbt slut</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── 4. SOCIAL PROOF / REVIEWS ─── -->
-  <section id="reviews">
-    <div class="reviews-inner">
-      <div class="review-card reveal" style="transition-delay: 0.1s">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Får alltid komplimanger."</blockquote>
-        <cite>— Sarah L.</cite>
-      </div>
-      <div class="review-card reveal" style="transition-delay: 0.2s">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Håller hela dagen."</blockquote>
-        <cite>— Marcus T.</cite>
-      </div>
-      <div class="review-card reveal" style="transition-delay: 0.3s">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Känns som en mycket dyrare doft."</blockquote>
-        <cite>— Emma K.</cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── 5. KOLLEKTION ─── -->
+  <!-- ─── 2. KOLLEKTION ─── -->
   <section id="collection">
     <div class="section-header reveal">
-      <span class="section-label">Kollektion</span>
-      <h2>Utvalda dofter</h2>
-      <p class="section-desc">Tre koncentrerade parfymoljor. Varje doft skapad för att lämna ett intryck.</p>
+      <h2>Kollektion</h2>
     </div>
 
     <div class="products-grid">
@@ -118,17 +56,14 @@
         <div class="product-img-wrap">
           <img src="assets/images/collection.png" alt="Doft 01" class="product-real-img" />
           <div class="product-overlay">
-            <a href="product.html" class="btn-primary btn-sm" id="buy-1-overlay">Upptäck doften</a>
+            <a href="product.html" class="btn-primary btn-sm" id="buy-1-overlay">Se produkt</a>
           </div>
         </div>
         <div class="product-info">
           <h3 class="product-title">Doft 01</h3>
-          <p class="product-desc">En doft som lämnar avtryck.</p>
-          <div class="product-price-block">
-            <span class="product-price">Från 129 kr</span>
-            <span class="product-sizes">6 ml och 12 ml tillgängligt</span>
-          </div>
-          <a href="product.html" class="btn-ghost" id="buy-1">Upptäck doften →</a>
+          <p class="product-desc">En doft som märks.</p>
+          <span class="product-price">129 kr</span>
+          <a href="product.html" class="btn-ghost" id="buy-1">Se produkt →</a>
         </div>
       </article>
 
@@ -136,17 +71,14 @@
         <div class="product-img-wrap">
           <img src="assets/images/hero-mockup.png" alt="Doft 02" class="product-real-img" />
           <div class="product-overlay">
-            <a href="product.html" class="btn-primary btn-sm" id="buy-2-overlay">Upptäck doften</a>
+            <a href="product.html" class="btn-primary btn-sm" id="buy-2-overlay">Se produkt</a>
           </div>
         </div>
         <div class="product-info">
           <h3 class="product-title">Doft 02</h3>
-          <p class="product-desc">Designad för att märkas.</p>
-          <div class="product-price-block">
-            <span class="product-price">Från 129 kr</span>
-            <span class="product-sizes">6 ml och 12 ml tillgängligt</span>
-          </div>
-          <a href="product.html" class="btn-ghost" id="buy-2">Upptäck doften →</a>
+          <p class="product-desc">Inte för alla.</p>
+          <span class="product-price">129 kr</span>
+          <a href="product.html" class="btn-ghost" id="buy-2">Se produkt →</a>
         </div>
       </article>
 
@@ -154,36 +86,17 @@
         <div class="product-img-wrap">
           <img src="assets/images/lifestyle.png" alt="Doft 03" class="product-real-img" />
           <div class="product-overlay">
-            <a href="product.html" class="btn-primary btn-sm" id="buy-3-overlay">Upptäck doften</a>
+            <a href="product.html" class="btn-primary btn-sm" id="buy-3-overlay">Se produkt</a>
           </div>
         </div>
         <div class="product-info">
           <h3 class="product-title">Doft 03</h3>
           <p class="product-desc">Diskret, men kraftfull.</p>
-          <div class="product-price-block">
-            <span class="product-price">Från 129 kr</span>
-            <span class="product-sizes">6 ml och 12 ml tillgängligt</span>
-          </div>
-          <a href="product.html" class="btn-ghost" id="buy-3">Upptäck doften →</a>
+          <span class="product-price">129 kr</span>
+          <a href="product.html" class="btn-ghost" id="buy-3">Se produkt →</a>
         </div>
       </article>
 
-    </div>
-  </section>
-
-  <!-- ─── 6. IDENTITET ─── -->
-  <section id="identity">
-    <div class="identity-inner">
-      <div class="identity-line reveal"></div>
-      <div class="identity-text reveal">
-        <span class="section-label">Filosofi</span>
-        <h2 class="identity-heading">Inte för alla.</h2>
-        <p>Scent Privé är byggt för dig som vill signalera något innan du ens säger ett ord.</p>
-        <a href="#collection" class="btn-primary btn-large" id="identity-cta">Se kollektionen</a>
-      </div>
-      <div class="identity-visual reveal" aria-hidden="true">
-        <div class="identity-mark">SP</div>
-      </div>
     </div>
   </section>
 
@@ -191,14 +104,12 @@
   <footer id="footer">
     <div class="footer-inner">
       <img src="assets/images/logo.png" alt="Scent Privé" class="footer-logo" id="footer-logo" />
-      <p class="footer-tagline">Parfymoljor av rang — komponerade för att minnas</p>
       <div class="footer-links">
         <a href="#collection">Dofter</a>
-        <a href="#identity">Om oss</a>
         <a href="mailto:info@scentprive.se">info@scentprive.se</a>
         <a href="https://instagram.com/scentprive" target="_blank" rel="noopener">Instagram</a>
       </div>
-      <p class="footer-copy">© 2026 Scent Privé. Alla rättigheter förbehållna.</p>
+      <p class="footer-copy">© 2026 Scent Privé.</p>
     </div>
   </footer>
 
