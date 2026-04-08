@@ -16,15 +16,17 @@
   <nav id="navbar">
     <div class="nav-inner">
       <div class="nav-links nav-left">
-        <a href="#collection" id="nav-collection">Kollektion</a>
+        <a href="#hero" id="nav-home">Hem</a>
+        <a href="#collection" id="nav-collection">Dofter</a>
         <a href="#identity" id="nav-identity">Om oss</a>
       </div>
       <a href="#hero" class="nav-logo" id="nav-logo-link">
         <img src="assets/images/logo.png" alt="Scent Privé" id="nav-logo-img" />
       </a>
       <div class="nav-links nav-right">
-        <a href="#benefits" id="nav-benefits">Fördelar</a>
-        <a href="#contact" id="nav-contact">Kontakt</a>
+        <a href="#footer" id="nav-contact">Kontakt</a>
+        <!-- Varukorg länken -->
+        <a href="#cart" id="nav-cart" class="nav-cart-link">Varukorg (0)</a>
       </div>
     </div>
   </nav>
@@ -35,9 +37,10 @@
       <p class="hero-eyebrow" id="hero-eyebrow">Parfymoljor &amp; Musk</p>
       <h1 class="hero-title" id="hero-title">Exklusiva doftoljor<br>som märks.</h1>
       <p class="hero-sub" id="hero-sub">Premium dofter i smidigt format – för dig som vill<br>lukta dyrt utan att betala överpris.</p>
+      <!-- ALLT LÄNKAR NU TILL KOLLEKTIONEN -->
       <div class="hero-ctas" id="hero-ctas">
         <a href="#collection" class="btn-primary" id="hero-cta-shop">Handla nu</a>
-        <a href="#focus" class="btn-outline" id="hero-cta-explore">Upptäck dofterna</a>
+        <a href="#collection" class="btn-outline" id="hero-cta-explore">Dofter</a>
       </div>
       <div class="hero-badges" id="hero-badges">
         <span>100% Koncentrerad olja</span>
@@ -54,7 +57,7 @@
     </div>
   </section>
 
-  <!-- ─── NY: 2. FOKUS PRODUKT (Konvertering) ─── -->
+  <!-- ─── 2. FOKUS PRODUKT (Konvertering) ─── -->
   <section id="focus">
     <div class="focus-inner">
       <div class="focus-visual reveal">
@@ -67,12 +70,13 @@
         <div class="focus-price-row">
           <span class="focus-price">Från 129 kr</span>
         </div>
-        <a href="#contact" class="btn-primary btn-large">Handla nu</a>
+        <!-- Länkar direkt till kollektionen -->
+        <a href="#collection" class="btn-primary btn-large">Se kollektionen</a>
       </div>
     </div>
   </section>
 
-  <!-- ─── NY: 3. SOCIAL PROOF / REVIEWS ─── -->
+  <!-- ─── 3. SOCIAL PROOF / REVIEWS ─── -->
   <section id="reviews">
     <div class="reviews-inner">
       <div class="review-card reveal" style="transition-delay: 0.1s">
@@ -93,7 +97,7 @@
     </div>
   </section>
 
-  <!-- ─── 4. KOLLEKTION ─── -->
+  <!-- ─── 4. KOLLEKTION (HUVUDFOKUS) ─── -->
   <section id="collection">
     <div class="section-header reveal">
       <span class="section-label">Kollektion</span>
@@ -105,10 +109,9 @@
 
       <article class="product-card reveal" id="product-1">
         <div class="product-img-wrap">
-          <!-- Använder bild istället för text -->
           <img src="assets/images/collection.png" alt="Doft 01" class="product-real-img" />
           <div class="product-overlay">
-            <a href="#contact" class="btn-primary btn-sm" id="buy-1-overlay">Handla nu</a>
+            <a href="#collection" class="btn-primary btn-sm" id="buy-1-overlay">Se produkt</a>
           </div>
         </div>
         <div class="product-info">
@@ -117,16 +120,15 @@
             <span class="product-price">Från 129 kr</span>
           </div>
           <p class="product-desc">En doft som lämnar avtryck.</p>
-          <a href="#contact" class="btn-ghost" id="buy-1">Se produkt →</a>
+          <a href="#collection" class="btn-ghost" id="buy-1">Se produkt →</a>
         </div>
       </article>
 
       <article class="product-card reveal" id="product-2">
         <div class="product-img-wrap">
-          <!-- Använder bild istället för text -->
           <img src="assets/images/hero-mockup.png" alt="Doft 02" class="product-real-img" />
           <div class="product-overlay">
-            <a href="#contact" class="btn-primary btn-sm" id="buy-2-overlay">Handla nu</a>
+            <a href="#collection" class="btn-primary btn-sm" id="buy-2-overlay">Se produkt</a>
           </div>
         </div>
         <div class="product-info">
@@ -135,16 +137,15 @@
             <span class="product-price">Från 129 kr</span>
           </div>
           <p class="product-desc">Designad för att märkas.</p>
-          <a href="#contact" class="btn-ghost" id="buy-2">Se produkt →</a>
+          <a href="#collection" class="btn-ghost" id="buy-2">Se produkt →</a>
         </div>
       </article>
 
       <article class="product-card reveal" id="product-3">
         <div class="product-img-wrap">
-          <!-- Använder bild istället för text -->
           <img src="assets/images/lifestyle.png" alt="Doft 03" class="product-real-img" />
           <div class="product-overlay">
-            <a href="#contact" class="btn-primary btn-sm" id="buy-3-overlay">Handla nu</a>
+            <a href="#collection" class="btn-primary btn-sm" id="buy-3-overlay">Se produkt</a>
           </div>
         </div>
         <div class="product-info">
@@ -153,7 +154,7 @@
             <span class="product-price">Från 129 kr</span>
           </div>
           <p class="product-desc">Sitter kvar länge efter att du lämnat rummet.</p>
-          <a href="#contact" class="btn-ghost" id="buy-3">Se produkt →</a>
+          <a href="#collection" class="btn-ghost" id="buy-3">Se produkt →</a>
         </div>
       </article>
 
@@ -206,47 +207,16 @@
     </div>
   </section>
 
-  <!-- ─── 7. KONTAKT / BESTÄLLNING ─── -->
-  <section id="contact">
-    <div class="contact-inner">
-      <div class="contact-text reveal">
-        <span class="section-label">Beställ</span>
-        <h2>Redo att handla?</h2>
-        <p>Vi svarar inom 24 timmar. Skriv vilken doft du är intresserad av och önskad storlek.</p>
-        <div class="contact-details">
-          <a href="mailto:info@scentprive.se" id="contact-email">info@scentprive.se</a>
-          <a href="https://instagram.com/scentprive" target="_blank" rel="noopener" id="contact-ig">@scentprive</a>
-        </div>
-      </div>
-      <form class="contact-form reveal" id="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <input type="text" id="form-name" placeholder="Ditt namn" required autocomplete="name" />
-        </div>
-        <div class="form-group">
-          <input type="email" id="form-email" placeholder="E-postadress" required autocomplete="email" />
-        </div>
-        <div class="form-group">
-          <input type="text" id="form-interest" placeholder="Doft &amp; storlek" />
-        </div>
-        <div class="form-group">
-          <textarea id="form-message" placeholder="Meddelande" rows="4"></textarea>
-        </div>
-        <!-- Ändrad text på knappen -->
-        <button type="submit" class="btn-primary btn-large" style="width: 100%" id="form-submit">Skicka beställning</button>
-        <p class="form-success" id="form-success">Tack! Vi återkommer till dig snart.</p>
-      </form>
-    </div>
-  </section>
-
   <!-- ─── FOOTER ─── -->
   <footer id="footer">
     <div class="footer-inner">
       <img src="assets/images/logo.png" alt="Scent Privé" class="footer-logo" id="footer-logo" />
       <p class="footer-tagline">Parfymoljor av rang — komponerade för att minnas</p>
       <div class="footer-links">
-        <a href="#collection">Kollektion</a>
+        <a href="#collection">Dofter</a>
         <a href="#identity">Om oss</a>
-        <a href="#contact">Kontakt</a>
+        <a href="mailto:info@scentprive.se">info@scentprive.se</a>
+        <a href="https://instagram.com/scentprive" target="_blank" rel="noopener">Instagram</a>
       </div>
       <p class="footer-copy">© 2026 Scent Privé. Alla rättigheter förbehållna.</p>
     </div>

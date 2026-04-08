@@ -101,6 +101,7 @@ a { text-decoration: none; color: inherit; }
 }
 .nav-links a:hover { color: var(--gold); }
 .nav-links a:hover::after { width: 100%; }
+
 .nav-logo {
   display: flex;
   justify-content: center;
@@ -113,6 +114,12 @@ a { text-decoration: none; color: inherit; }
   transition: opacity var(--t-fast), transform var(--t);
 }
 #nav-logo-img:hover { opacity: 0.6; transform: scale(0.96); }
+
+/* Varukorg i Nav */
+.nav-cart-link {
+  font-weight: 500 !important;
+  color: #000 !important;
+}
 
 /* ============================================
    SHARED SECTION STYLES
@@ -622,84 +629,6 @@ a { text-decoration: none; color: inherit; }
 .benefit-card:nth-child(3) { transition-delay: 0.2s; }
 .benefit-card:nth-child(4) { transition-delay: 0.3s; }
 
-/* ============================================
-   7. KONTAKT
-   ============================================ */
-#contact {
-  padding: 180px 64px;
-  background: var(--cream);
-}
-.contact-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 120px;
-  align-items: start;
-}
-.contact-text .section-label { margin-bottom: 24px; }
-.contact-text h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(38px, 4vw, 64px);
-  font-weight: 400;
-  margin-bottom: 28px;
-  line-height: 1.15;
-}
-.contact-text p {
-  font-size: 16px;
-  color: var(--gray);
-  line-height: 1.8;
-  margin-bottom: 48px;
-}
-.contact-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.contact-details a {
-  font-size: 15px;
-  letter-spacing: 0.05em;
-  color: var(--black);
-  border-bottom: 1px solid var(--border);
-  padding: 16px 0;
-  transition: color var(--t), border-color var(--t);
-}
-.contact-details a:hover {
-  color: var(--gold);
-  border-color: var(--gold);
-}
-.contact-form {
-  display: flex;
-  flex-direction: column;
-}
-.form-group { border-bottom: 1px solid var(--border); }
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 300;
-  letter-spacing: 0.04em;
-  color: var(--black);
-  padding: 24px 0;
-  resize: none;
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: var(--gray); }
-.form-group:focus-within { border-color: var(--gold); }
-.contact-form .btn-primary { margin-top: 48px; }
-.form-success {
-  display: none;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 20px;
-}
-.form-success.show { display: block; }
 
 /* ============================================
    FOOTER
@@ -779,15 +708,14 @@ a { text-decoration: none; color: inherit; }
   #collection { padding: 140px 40px; }
   .products-grid { grid-template-columns: 1fr; max-width: 500px; gap: 100px; margin: 0 auto; }
   
-  #identity, #benefits, #contact { padding: 140px 40px; }
-  .contact-inner { grid-template-columns: 1fr; gap: 80px; }
+  #identity, #benefits { padding: 140px 40px; }
 }
 
 @media (max-width: 640px) {
   .nav-links { display: none; }
-  .nav-inner { display: flex; justify-content: center; }
+  .nav-inner { display: flex; justify-content: space-between; }
   #hero { padding: 140px 24px 60px; }
-  #focus, #reviews, #collection, #identity, #benefits, #contact { padding: 120px 24px; }
+  #focus, #reviews, #collection, #identity, #benefits { padding: 120px 24px; }
   #footer { padding: 100px 24px; }
   
   .benefits-grid { grid-template-columns: 1fr; }
