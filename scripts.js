@@ -1,20 +1,12 @@
-/* ─── Scroll Animations & Interactions ─── */
+/* ─── Scent Privé — scripts.js ─── */
 
-// ── Navbar scroll effect
+// Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
 
-// ── Intersection Observer for reveal animations
-const revealTargets = [
-  '.manifesto-inner',
-  '.product-card',
-  '.about-text',
-  '.about-visual',
-  '.journal-card',
-];
-
+// Scroll-reveal for .reveal elements
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -22,54 +14,50 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.12 });
 
-revealTargets.forEach(selector => {
-  document.querySelectorAll(selector).forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Active nav link on scroll
+const sections = [
+  { id: 'collection', navId: 'nav-collection' },
+  { id: 'identity',   navId: 'nav-identity'   },
+  { id: 'benefits',   navId: 'nav-benefits'   },
+  { id: 'contact',    navId: 'nav-contact'    },
+];
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.nav-links a').forEach(a => a.style.color = '');
+      const match = sections.find(s => s.id === entry.target.id);
+      if (match) {
+        const link = document.getElementById(match.navId);
+        if (link) link.style.color = 'var(--gold)';
+      }
+    }
+  });
+}, { threshold: 0.35 });
+
+sections.forEach(s => {
+  const el = document.getElementById(s.id);
+  if (el) navObserver.observe(el);
 });
 
-// ── Contact form handler
+// Contact form
 function handleSubmit(e) {
   e.preventDefault();
+  const btn     = document.getElementById('form-submit');
   const success = document.getElementById('form-success');
-  const btn = document.getElementById('form-submit');
-
   btn.textContent = '...';
+  btn.style.opacity = '0.6';
   btn.style.pointerEvents = 'none';
-
   setTimeout(() => {
     e.target.reset();
     success.classList.add('show');
     btn.textContent = 'Skicka beställning';
+    btn.style.opacity = '';
     btn.style.pointerEvents = '';
-
     setTimeout(() => success.classList.remove('show'), 5000);
-  }, 800);
+  }, 900);
 }
-
-// ── Smooth active nav highlight on scroll
-const sections = ['hero', 'collection', 'about', 'journal', 'contact'];
-const navMap = {
-  'collection': 'nav-collection',
-  'about': 'nav-about',
-  'journal': 'nav-journal',
-  'contact': 'nav-contact',
-};
-
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      document.querySelectorAll('.nav-links a').forEach(a => a.style.color = '');
-      if (navMap[id]) {
-        const activeLink = document.getElementById(navMap[id]);
-        if (activeLink) activeLink.style.color = 'var(--gold)';
-      }
-    }
-  });
-}, { threshold: 0.4 });
-
-sections.forEach(id => {
-  const el = document.getElementById(id);
-  if (el) sectionObserver.observe(el);
-});
