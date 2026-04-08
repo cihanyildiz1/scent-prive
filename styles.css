@@ -155,12 +155,12 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(72px, 12vw, 150px);
+  font-size: clamp(56px, 7vw, 110px);
   font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
   color: var(--black);
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 .hero-sub {
   font-size: 26px;
@@ -432,7 +432,6 @@ a { text-decoration: none; color: inherit; }
   .nav-links { display: none; }
   .nav-inner { display: flex; justify-content: space-between; }
   #hero { padding: 160px 24px 80px; }
-  .hero-title { font-size: 56px; }
   .hero-ctas { width: 100%; }
   .btn-primary { width: 100%; text-align: center; }
   
