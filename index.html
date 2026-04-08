@@ -20,7 +20,7 @@
       </a>
       <div class="nav-links">
         <a href="#collection" class="nav-link">Dofter</a>
-        <a href="#" class="nav-cart-link" id="nav-cart">Varukorg (0)</a>
+        <button class="nav-cart-link" id="nav-cart" aria-label="Öppna varukorg">Varukorg (<span id="cart-count">0</span>)</button>
       </div>
     </div>
   </nav>
@@ -106,6 +106,40 @@
         </div>
       </article>
 
+      <article class="product-card reveal" id="product-4" style="transition-delay:0.3s">
+        <a href="product.html" class="product-img-link">
+          <div class="product-img-wrap">
+            <img src="assets/images/collection.png" alt="Doft 04" />
+          </div>
+        </a>
+        <div class="product-info">
+          <h3>Doft 04</h3>
+          <p>En doft som stannar kvar.</p>
+          <div class="product-meta">
+            <span class="price">Från 129 kr</span>
+            <span class="sizes">6 ml &amp; 12 ml</span>
+          </div>
+          <a href="product.html" class="btn-outline">Se produkt</a>
+        </div>
+      </article>
+
+      <article class="product-card reveal" id="product-5" style="transition-delay:0.4s">
+        <a href="product.html" class="product-img-link">
+          <div class="product-img-wrap">
+            <img src="assets/images/hero-mockup.png" alt="Doft 05" />
+          </div>
+        </a>
+        <div class="product-info">
+          <h3>Doft 05</h3>
+          <p>Rätt närvarokraft.</p>
+          <div class="product-meta">
+            <span class="price">Från 129 kr</span>
+            <span class="sizes">6 ml &amp; 12 ml</span>
+          </div>
+          <a href="product.html" class="btn-outline">Se produkt</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -146,14 +180,17 @@
       <div class="review reveal">
         <div class="stars">★★★★★</div>
         <p>"Får alltid komplimanger."</p>
+        <span class="reviewer">— Adam K.</span>
       </div>
       <div class="review reveal" style="transition-delay:0.1s">
         <div class="stars">★★★★★</div>
         <p>"Håller hela dagen."</p>
+        <span class="reviewer">— Rami S.</span>
       </div>
       <div class="review reveal" style="transition-delay:0.2s">
         <div class="stars">★★★★★</div>
         <p>"Känns som en mycket dyrare doft."</p>
+        <span class="reviewer">— Sara M.</span>
       </div>
     </div>
   </section>
@@ -232,5 +269,23 @@
   </footer>
 
   <script src="scripts.js"></script>
+
+  <!-- ─── VARUKORG PANEL ─── -->
+  <div id="cart-overlay" class="cart-overlay" hidden></div>
+  <aside id="cart-panel" class="cart-panel" aria-hidden="true">
+    <div class="cart-panel-header">
+      <h3>Varukorg</h3>
+      <button id="cart-close" aria-label="Stäng varukorg">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Totalt</span>
+        <span id="cart-total-price">0 kr</span>
+      </div>
+      <button class="btn-primary" style="width:100%">Gå till kassan</button>
+    </div>
+  </aside>
+
 </body>
 </html>
