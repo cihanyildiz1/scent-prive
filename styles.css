@@ -420,7 +420,8 @@ a { text-decoration: none; color: inherit; }
     gap: 80px;
   }
   .hero-left { align-items: center; }
-  .hero-right { display: none; }
+  .hero-right { display: flex; width: 100%; }
+  .hero-img-frame { max-width: 500px; margin: 0 auto; }
   
   #collection { padding: 140px 40px; }
   .products-grid { grid-template-columns: 1fr; max-width: 600px; gap: 100px; }
