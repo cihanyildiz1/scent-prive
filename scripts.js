@@ -2,45 +2,41 @@
 
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-}, { passive: true });
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+}
 
-// Scroll-reveal for .reveal elements
-const observer = new IntersectionObserver((entries) => {
+// Scroll-reveal
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+      revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// Active nav link on scroll
-const sections = [
-  { id: 'collection', navId: 'nav-collection' }
-];
+// FAQ Accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    const answer = btn.nextElementSibling;
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        if (a.id !== 'nav-cart') {
-          a.style.color = '';
+    // Close all others
+    document.querySelectorAll('.faq-q').forEach(other => {
+      if (other !== btn) {
+        other.setAttribute('aria-expanded', 'false');
+        if (other.nextElementSibling) {
+          other.nextElementSibling.hidden = true;
         }
-      });
-      const match = sections.find(s => s.id === entry.target.id);
-      if (match) {
-        const link = document.getElementById(match.navId);
-        if (link) link.style.color = 'var(--gold)';
       }
-    }
-  });
-}, { threshold: 0.35 });
+    });
 
-sections.forEach(s => {
-  const el = document.getElementById(s.id);
-  if (el) navObserver.observe(el);
+    btn.setAttribute('aria-expanded', String(!expanded));
+    if (answer) answer.hidden = expanded;
+  });
 });
