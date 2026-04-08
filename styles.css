@@ -360,6 +360,34 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ============================================
+   3.5 IDENTITET
+   ============================================ */
+#identity {
+  padding: 160px 64px;
+  background: var(--black);
+  text-align: center;
+}
+.identity-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.identity-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.0;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.identity-inner p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 #footer {
@@ -419,5 +447,6 @@ a { text-decoration: none; color: inherit; }
   
   #collection { padding: 100px 24px; }
   #product-detail { padding: 120px 24px 60px; }
+  #identity { padding: 100px 24px; }
   #footer { padding: 80px 24px; }
 }
