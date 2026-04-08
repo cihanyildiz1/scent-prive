@@ -141,12 +141,12 @@ a { text-decoration: none; color: inherit; }
 #hero {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   align-items: center;
-  padding: 100px 80px;
-  max-width: 1600px;
+  padding: 160px 80px 100px;
+  max-width: 1800px;
   margin: 0 auto;
-  gap: 100px;
+  gap: 120px;
 }
 .hero-left {
   display: flex;
@@ -155,19 +155,20 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(56px, 7vw, 110px);
+  font-size: clamp(72px, 12vw, 150px);
   font-weight: 400;
-  line-height: 1.0;
-  letter-spacing: -0.02em;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   color: var(--black);
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 .hero-sub {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 300;
   line-height: 1.6;
   color: var(--gray);
-  margin-bottom: 64px;
+  margin-bottom: 80px;
+  max-width: 600px;
 }
 .hero-ctas { margin-bottom: 24px; }
 .hero-right {
@@ -178,8 +179,8 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-img-frame {
   width: 100%;
-  max-width: 680px;
-  aspect-ratio: 3/4.2;
+  max-width: 800px;
+  aspect-ratio: 4/5;
   background: var(--cream);
   overflow: hidden;
 }
@@ -196,32 +197,22 @@ a { text-decoration: none; color: inherit; }
    2. KOLLEKTION
    ============================================ */
 #collection {
-  padding: 160px 64px;
-  background: var(--cream);
-}
-.section-header {
-  text-align: center;
-  margin-bottom: 120px;
-}
-.section-header h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(48px, 6vw, 76px);
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  padding: 180px 64px;
+  background: var(--white);
 }
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px;
-  max-width: 1500px;
+  gap: 120px;
+  max-width: 1700px;
   margin: 0 auto;
 }
 .product-img-wrap {
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/5;
   overflow: hidden;
   position: relative;
-  background: rgba(0,0,0,0.03);
-  margin-bottom: 32px;
+  background: var(--cream);
+  margin-bottom: 40px;
 }
 .product-real-img {
   width: 100%;
@@ -249,21 +240,21 @@ a { text-decoration: none; color: inherit; }
 }
 .product-title {
   font-family: var(--font-serif);
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 400;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .product-desc {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--gray);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 .product-price {
   display: block;
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 24px;
   font-style: italic;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 .product-card:nth-child(2) { transition-delay: 0.1s; }
 .product-card:nth-child(3) { transition-delay: 0.2s; }
@@ -363,27 +354,26 @@ a { text-decoration: none; color: inherit; }
    3.5 IDENTITET
    ============================================ */
 #identity {
-  padding: 160px 64px;
-  background: var(--black);
+  padding: 100px 64px 80px;
+  background: var(--cream);
   text-align: center;
 }
 .identity-inner {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
 }
 .identity-heading {
   font-family: var(--font-serif);
-  font-size: clamp(52px, 7vw, 96px);
+  font-size: clamp(32px, 5vw, 56px);
   font-weight: 400;
   font-style: italic;
-  color: var(--white);
-  line-height: 1.0;
-  margin-bottom: 24px;
-  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
 }
 .identity-inner p {
-  font-size: 18px;
-  color: rgba(255,255,255,0.7);
+  font-size: 16px;
+  color: var(--gray);
   line-height: 1.8;
 }
 
@@ -425,15 +415,15 @@ a { text-decoration: none; color: inherit; }
   .nav-inner { padding: 0 40px; }
   #hero {
     grid-template-columns: 1fr;
-    padding: 160px 48px 80px;
+    padding: 180px 40px 100px;
     text-align: center;
-    gap: 60px;
+    gap: 80px;
   }
   .hero-left { align-items: center; }
   .hero-right { display: none; }
   
-  #collection { padding: 120px 40px; }
-  .products-grid { grid-template-columns: 1fr; max-width: 500px; gap: 80px; }
+  #collection { padding: 140px 40px; }
+  .products-grid { grid-template-columns: 1fr; max-width: 600px; gap: 100px; }
   
   .pd-inner { grid-template-columns: 1fr; gap: 60px; }
 }
@@ -441,12 +431,13 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 640px) {
   .nav-links { display: none; }
   .nav-inner { display: flex; justify-content: space-between; }
-  #hero { padding: 140px 24px 60px; }
+  #hero { padding: 160px 24px 80px; }
+  .hero-title { font-size: 56px; }
   .hero-ctas { width: 100%; }
   .btn-primary { width: 100%; text-align: center; }
   
-  #collection { padding: 100px 24px; }
+  #collection { padding: 120px 24px; }
   #product-detail { padding: 120px 24px 60px; }
-  #identity { padding: 100px 24px; }
+  #identity { padding: 80px 24px 60px; }
   #footer { padding: 80px 24px; }
 }
