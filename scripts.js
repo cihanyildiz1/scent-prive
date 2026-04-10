@@ -10,13 +10,14 @@ function getCart() {
 function saveCart(cart) {
   localStorage.setItem('scentprive_cart', JSON.stringify(cart));
 }
-function addToCart(name, price, size) {
+function addToCart(name, price, size, qty) {
+  qty = qty || 1;
   const cart = getCart();
   const existing = cart.find(i => i.name === name && i.size === size);
   if (existing) {
-    existing.qty += 1;
+    existing.qty += qty;
   } else {
-    cart.push({ name, price: Number(price), size, qty: 1 });
+    cart.push({ name, price: Number(price), size, qty });
   }
   saveCart(cart);
   updateCartUI();
@@ -102,15 +103,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Add to cart button (product page)
   const addBtn = document.getElementById('add-to-cart-btn');
+  let currentQty = 1;
+
   if (addBtn) {
+    // Quantity controls
+    const qtyDisplay = document.getElementById('qty-display');
+    const qtyMinus = document.getElementById('qty-minus');
+    const qtyPlus = document.getElementById('qty-plus');
+
+    if (qtyMinus && qtyPlus && qtyDisplay) {
+      qtyMinus.addEventListener('click', () => {
+        if (currentQty > 1) { currentQty--; qtyDisplay.textContent = currentQty; }
+      });
+      qtyPlus.addEventListener('click', () => {
+        currentQty++;
+        qtyDisplay.textContent = currentQty;
+      });
+    }
+
+    // Size-based price update
+    document.querySelectorAll('input[name="size"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const price = radio.dataset.price;
+        addBtn.dataset.productPrice = price;
+        const priceEl = document.getElementById('pd-price-display');
+        if (priceEl) priceEl.innerHTML = `<strong>${price} kr</strong>`;
+      });
+    });
+
     addBtn.addEventListener('click', () => {
       const selectedSize = document.querySelector('input[name="size"]:checked');
       const size = selectedSize ? selectedSize.value : '6ml';
+      const price = selectedSize ? selectedSize.dataset.price : addBtn.dataset.productPrice;
       addToCart(
         addBtn.dataset.productName,
-        addBtn.dataset.productPrice,
-        size
+        price,
+        size,
+        currentQty
       );
+      currentQty = 1;
+      if (document.getElementById('qty-display')) document.getElementById('qty-display').textContent = '1';
     });
   }
 });

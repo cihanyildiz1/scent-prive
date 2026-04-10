@@ -42,7 +42,7 @@
         </nav>
         
         <h1 class="pd-title">Doft 01</h1>
-        <p class="pd-price">Från <strong>129 kr</strong></p>
+        <p class="pd-price" id="pd-price-display">Från <strong>129 kr</strong></p>
         
         <div class="pd-desc">
           <p>En doft som lämnar avtryck. Varje flaska är noggrant framtagen för att ge dig en djup, långvarig upplevelse du faktiskt märker av.</p>
@@ -53,14 +53,22 @@
           <label class="pd-label">Välj storlek</label>
           <div class="pd-radio-group">
             <label class="pd-radio">
-              <input type="radio" name="size" value="6ml" checked />
-              <span>6 ml</span>
+              <input type="radio" name="size" value="6ml" data-price="129" checked />
+              <span>6 ml – 129 kr</span>
             </label>
             <label class="pd-radio">
-              <input type="radio" name="size" value="12ml" />
-              <span>12 ml</span>
+              <input type="radio" name="size" value="12ml" data-price="199" />
+              <span>12 ml – 199 kr</span>
             </label>
           </div>
+
+          <label class="pd-label" style="margin-top:24px">Antal</label>
+          <div class="pd-qty-group">
+            <button type="button" class="qty-btn" id="qty-minus" aria-label="Minska">−</button>
+            <span id="qty-display">1</span>
+            <button type="button" class="qty-btn" id="qty-plus" aria-label="Öka">+</button>
+          </div>
+
           <button type="button" class="btn-primary pd-btn" id="add-to-cart-btn"
             data-product-name="Doft 01"
             data-product-price="129">

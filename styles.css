@@ -665,6 +665,36 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 .pd-radio input:checked + span { border-color: var(--black); color: var(--black); }
 .pd-btn { width: 100%; margin-bottom: 48px; }
+
+/* Quantity selector */
+.pd-qty-group {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--border);
+  width: fit-content;
+  margin-bottom: 32px;
+}
+.qty-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--black);
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.qty-btn:hover { background: var(--cream); }
+#qty-display {
+  min-width: 48px;
+  text-align: center;
+  font-size: 16px;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  line-height: 48px;
+}
 .pd-accordions { border-top: 1px solid var(--border); }
 .pd-accordion { border-bottom: 1px solid var(--border); padding: 28px 0; }
 .pd-accordion-title {
