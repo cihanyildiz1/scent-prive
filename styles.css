@@ -681,7 +681,60 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 /* ============================================
-   RESPONSIVE — TABLET ≤ 1000px
+   POLICY PAGES
+   ============================================ */
+.policy-page {
+  padding: 140px 64px 100px;
+  min-height: 100vh;
+}
+.policy-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.policy-inner h1 {
+  font-family: var(--ff-serif);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.policy-date {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 64px;
+}
+.policy-inner section {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.policy-inner section:last-child {
+  border-bottom: none;
+}
+.policy-inner h2 {
+  font-family: var(--ff-serif);
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+.policy-inner p, .policy-inner li {
+  font-size: 16px;
+  color: var(--gray);
+  line-height: 1.8;
+}
+.policy-inner ol {
+  padding-left: 24px;
+}
+.policy-inner ol li { margin-bottom: 10px; }
+.policy-inner a {
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.policy-inner strong { color: var(--black); font-weight: 500; }
+
+/* ============================================
+   RESPONSIVE — TABLET
    ============================================ */
 @media (max-width: 1000px) {
   #navbar, #navbar.scrolled { padding-left: 40px; padding-right: 40px; }
