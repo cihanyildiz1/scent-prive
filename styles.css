@@ -105,6 +105,16 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   transition: opacity 0.2s;
 }
 #nav-logo-img:hover { opacity: 0.6; }
+.nav-logo-text {
+  font-family: var(--ff-serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--black);
+  transition: color 0.2s;
+}
+.nav-logo-text:hover { color: var(--gold); }
 .nav-links {
   display: flex;
   gap: 40px;
