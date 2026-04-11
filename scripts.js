@@ -101,6 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('cart-overlay');
   if (overlay) overlay.addEventListener('click', closeCart);
 
+  // Checkout button placeholder
+  document.querySelectorAll('.cart-footer .btn-primary').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Kassan är under uppbyggnad – snart kan du betala med Stripe här!');
+    });
+  });
+
   // Add to cart button (product page)
   const addBtn = document.getElementById('add-to-cart-btn');
   let currentQty = 1;
