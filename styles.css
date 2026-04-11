@@ -166,7 +166,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   grid-area: image;
   align-self: center;
   background: var(--cream);
-  aspect-ratio: 3/2;
+  aspect-ratio: 4/5;
   overflow: hidden;
   border-radius: 4px;
 }
@@ -204,6 +204,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   margin-top: -12px;
   margin-bottom: 32px;
 }
+
+.trust-bar-mobile { display: none !important; }
 
 /* Trust Bar */
 .trust-bar {
@@ -830,7 +832,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   .hero-bottom { padding-top: 0; display: flex; flex-direction: column; align-items: center; }
   .hero-cta-desktop { display: none !important; }
   .hero-cta-mobile { display: inline-flex !important; width: 100%; margin-top: 16px; margin-bottom: 8px; }
-  .trust-bar { justify-content: center; }
+  .trust-bar-desktop { display: none !important; }
+  .trust-bar-mobile { display: flex !important; justify-content: center; width: 100%; }
 
   .products-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -858,8 +861,16 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   .hero-cta-mobile { margin-top: 12px; margin-bottom: 12px; }
   .hero-bottom { padding: 16px 24px 0; }
   .hero-premium-line { display: none; }
-  .trust-bar .dot { display: none; }
-  .trust-bar { flex-direction: column; gap: 8px; font-size: 11px; }
+  
+  .trust-bar-mobile {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 8px;
+    font-size: 10px;
+    margin-bottom: 24px;
+    color: var(--gray);
+  }
+  .trust-bar-mobile .dot { display: block; color: var(--gold); }
 
   #collection, #features, #identity, #reviews, #faq { padding: 80px 24px; padding-top: 100px; }
   .section-title { margin-bottom: 48px; }
