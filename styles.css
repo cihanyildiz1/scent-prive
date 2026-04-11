@@ -166,7 +166,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   grid-area: image;
   align-self: center;
   background: var(--cream);
-  aspect-ratio: 4/5;
+  aspect-ratio: 3/2;
   overflow: hidden;
   border-radius: 4px;
 }
@@ -823,7 +823,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
     text-align: center;
     max-width: 680px;
   }
-  .hero-img-wrap { max-width: 480px; margin: 0 auto; width: 100%; aspect-ratio: 4/4.5; border-radius: 4px; }
+  .hero-img-wrap { max-width: 100%; margin: 0 auto; width: 100%; aspect-ratio: 4/5; border-radius: 4px; }
+  .hero-img { transform: scale(1.15); object-position: center; }
   .hero-bottom { padding-top: 0; display: flex; flex-direction: column; align-items: center; }
   .hero-bottom .btn-primary { width: 100%; }
   .trust-bar { justify-content: center; }
@@ -846,12 +847,15 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   .nav-links { gap: 24px; }
   .nav-link { display: none; }
 
-  #hero { padding: 120px 24px 80px; gap: 36px; }
+  #hero { padding: 120px 0px 80px; gap: 24px; max-width: 100%; }
+  .hero-text { padding: 0 24px; }
   .hero-title { font-size: clamp(40px, 13vw, 60px); }
   .hero-sub { font-size: 16px; }
-  .hero-img-wrap { aspect-ratio: 1/1; max-width: 320px; }
+  .hero-img-wrap { aspect-ratio: 4/5; max-width: 100%; border-radius: 0; }
+  .hero-bottom { padding: 0 24px; }
+  .hero-premium-line { display: none; }
   .trust-bar .dot { display: none; }
-  .trust-bar { flex-direction: column; gap: 6px; }
+  .trust-bar { flex-direction: column; gap: 6px; font-size: 10px; }
 
   #collection, #features, #identity, #reviews, #faq { padding: 80px 24px; padding-top: 100px; }
   .section-title { margin-bottom: 48px; }
