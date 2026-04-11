@@ -865,10 +865,10 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   .trust-bar-mobile {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 4px 8px;
+    gap: 8px 10px;
     font-size: 10px;
     margin-bottom: 24px;
-    color: var(--gray);
+    color: #444;
   }
   .trust-bar-mobile .dot { display: block; color: var(--gold); }
 
