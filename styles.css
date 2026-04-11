@@ -194,6 +194,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .hero-bottom .btn-primary {
   margin-bottom: 24px;
 }
+.hero-cta-mobile { display: none; }
+
 .hero-premium-line {
   font-family: var(--ff-serif);
   font-style: italic;
@@ -823,10 +825,11 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
     text-align: center;
     max-width: 680px;
   }
-  .hero-img-wrap { max-width: 100%; margin: 0 auto; width: 100%; aspect-ratio: 4/5; border-radius: 4px; }
+  .hero-img-wrap { max-width: 100%; margin: 0 auto; width: 100%; aspect-ratio: 4/4.5; border-radius: 4px; }
   .hero-img { transform: scale(1.15); object-position: center; }
   .hero-bottom { padding-top: 0; display: flex; flex-direction: column; align-items: center; }
-  .hero-bottom .btn-primary { width: 100%; }
+  .hero-cta-desktop { display: none !important; }
+  .hero-cta-mobile { display: inline-flex !important; width: 100%; margin-top: 16px; margin-bottom: 8px; }
   .trust-bar { justify-content: center; }
 
   .products-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
@@ -844,18 +847,19 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 @media (max-width: 640px) {
   #navbar, #navbar.scrolled { padding: 20px 24px; }
   #nav-logo-img { height: 30px; }
-  .nav-links { gap: 24px; }
+  #nav-links { gap: 24px; }
   .nav-link { display: none; }
 
-  #hero { padding: 120px 0px 80px; gap: 24px; max-width: 100%; }
+  #hero { padding: 120px 0px 60px; gap: 24px; max-width: 100%; }
   .hero-text { padding: 0 24px; }
-  .hero-title { font-size: clamp(40px, 13vw, 60px); }
-  .hero-sub { font-size: 16px; }
-  .hero-img-wrap { aspect-ratio: 4/5; max-width: 100%; border-radius: 0; }
-  .hero-bottom { padding: 0 24px; }
+  .hero-title { font-size: clamp(38px, 12vw, 60px); margin-bottom: 8px; }
+  .hero-sub { font-size: 16px; margin-bottom: 8px; }
+  .hero-img-wrap { aspect-ratio: 4/4.5; max-width: 100%; border-radius: 0; }
+  .hero-cta-mobile { margin-top: 12px; margin-bottom: 12px; }
+  .hero-bottom { padding: 16px 24px 0; }
   .hero-premium-line { display: none; }
   .trust-bar .dot { display: none; }
-  .trust-bar { flex-direction: column; gap: 6px; font-size: 10px; }
+  .trust-bar { flex-direction: column; gap: 8px; font-size: 11px; }
 
   #collection, #features, #identity, #reviews, #faq { padding: 80px 24px; padding-top: 100px; }
   .section-title { margin-bottom: 48px; }
