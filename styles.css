@@ -64,6 +64,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   align-items: center;
   justify-content: center;
   border: 1px solid var(--black);
+  background: transparent;
   color: var(--black);
   font-family: var(--ff-sans);
   font-size: 11px;
@@ -190,7 +191,15 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   color: var(--gray);
 }
 .hero-bottom .btn-primary {
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+}
+.hero-premium-line {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gray);
+  margin-top: -12px;
+  margin-bottom: 32px;
 }
 
 /* Trust Bar */
@@ -227,14 +236,34 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   font-family: var(--ff-serif);
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 400;
-  margin-bottom: 80px;
+  margin-bottom: 16px;
   letter-spacing: -0.01em;
+}
+.collection-intro {
+  font-size: 16px;
+  color: var(--gray);
+  margin-bottom: 64px;
 }
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 48px;
   max-width: 1500px;
+}
+.product-card { position: relative; }
+.product-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--ff-sans);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  z-index: 2;
 }
 .product-img-link { display: block; }
 .product-img-wrap {
@@ -271,7 +300,9 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .price {
   font-family: var(--ff-serif);
   font-size: 20px;
+  font-weight: 600;
   font-style: italic;
+  color: var(--black);
 }
 .sizes {
   font-size: 11px;
@@ -521,6 +552,14 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .cart-footer {
   padding: 32px 40px 40px;
   border-top: 1px solid var(--border);
+}
+.cart-trust {
+  font-size: 11px;
+  color: var(--gray);
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 .cart-total {
   display: flex;
