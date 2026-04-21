@@ -1054,7 +1054,16 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   /* ── Sections ── */
   #collection, #features, #faq { padding: 60px 24px; padding-top: 60px; }
   .section-title { margin-bottom: 40px; }
-  .products-grid { max-width: 100%; gap: 32px; }
+  .products-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 16px; 
+    max-width: 100%; 
+  }
+  .product-info h3 { font-size: 16px; }
+  .product-info p { font-size: 12px; margin-bottom: 8px; line-height: 1.4; }
+  .product-meta { flex-direction: column; gap: 2px; align-items: flex-start; margin-bottom: 12px; }
+  .price { font-size: 15px; }
+  .btn-outline { padding: 12px 16px; font-size: 10px; }
   .features-grid { grid-template-columns: 1fr; }
   .reviews-inner { grid-template-columns: 1fr; max-width: 100%; }
   #faq .faq-list { max-width: 100%; }
