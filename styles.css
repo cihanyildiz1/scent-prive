@@ -356,7 +356,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
    KOLLEKTION
    ============================================ */
 #collection {
-  padding: 160px 64px;
+  padding: 100px 64px;
   background: var(--white);
   border-top: 1px solid var(--border);
 }
@@ -382,30 +382,33 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  max-width: 1500px;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .product-card { position: relative; }
 .product-badge {
   position: absolute;
-  top: 16px;
-  left: 16px;
-  background: var(--black);
-  color: var(--white);
+  top: 12px;
+  left: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--black);
   font-family: var(--ff-sans);
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 8px 16px;
+  padding: 4px 10px;
   z-index: 2;
 }
 .product-img-link { display: block; }
 .product-img-wrap {
-  aspect-ratio: 4/5;
+  aspect-ratio: 4/4.5;
   overflow: hidden;
   background: var(--cream);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
+  border-radius: 4px;
 }
 .product-img-wrap img {
   width: 100%;
@@ -417,20 +420,20 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .product-info { text-align: left; }
 .product-info h3 {
   font-family: var(--ff-serif);
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 400;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .product-info p {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--gray);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .product-meta {
   display: flex;
   gap: 12px;
   align-items: baseline;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 .price {
   font-family: var(--ff-serif);
@@ -440,7 +443,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   color: var(--black);
 }
 .sizes {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gray);
@@ -450,7 +453,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
    FEATURES
    ============================================ */
 #features {
-  padding: 140px 64px;
+  padding: 100px 64px;
   background: var(--cream);
   border-top: 1px solid var(--border);
 }
@@ -552,7 +555,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
    FAQ
    ============================================ */
 #faq {
-  padding: 140px 64px;
+  padding: 100px 64px;
   border-top: 1px solid var(--border);
 }
 #faq .section-title { margin-bottom: 64px; }
@@ -1049,9 +1052,9 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   .hero-cta-overlay:hover { background: rgba(255,255,255,1); }
 
   /* ── Sections ── */
-  #collection, #features, #identity, #reviews, #faq { padding: 80px 24px; padding-top: 80px; }
+  #collection, #features, #faq { padding: 60px 24px; padding-top: 60px; }
   .section-title { margin-bottom: 40px; }
-  .products-grid { max-width: 100%; }
+  .products-grid { max-width: 100%; gap: 32px; }
   .features-grid { grid-template-columns: 1fr; }
   .reviews-inner { grid-template-columns: 1fr; max-width: 100%; }
   #faq .faq-list { max-width: 100%; }
