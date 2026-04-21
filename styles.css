@@ -81,7 +81,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
    ANNOUNCEMENT BAR
    ============================================ */
 #announce-bar {
-  background: var(--gold);
+  background: var(--black);
   color: var(--white);
   text-align: center;
   padding: 10px 24px;
