@@ -820,7 +820,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
       "image"
       "bottom";
     padding: 160px 40px 100px;
-    gap: 48px;
+    gap: 40px;
     text-align: center;
     max-width: 680px;
   }
@@ -848,13 +848,39 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   #nav-links { gap: 24px; }
   .nav-link { display: none; }
 
-  #hero { padding: 120px 0px 60px; gap: 24px; max-width: 100%; }
-  .hero-text { padding: 0 24px; }
+  /* ── Mobile Hero: CTA ovanför bild ── */
+  #hero {
+    padding: 110px 0px 60px;
+    gap: 0;
+    max-width: 100%;
+    grid-template-areas:
+      "text"
+      "bottom"
+      "image";
+  }
+  .hero-text { padding: 0 24px; margin-bottom: 28px; }
   .hero-title { font-size: clamp(38px, 12vw, 60px); margin-bottom: 8px; }
-  .hero-sub { font-size: 16px; margin-bottom: 8px; }
-  .hero-img-wrap { aspect-ratio: 4/4.5; max-width: 100%; border-radius: 0; }
-  .hero-bottom { padding: 16px 24px 0; }
-  .hero-bottom .btn-primary { margin-bottom: 16px; margin-top: 16px; }
+  .hero-sub { font-size: 16px; margin-bottom: 0; }
+  .hero-bottom {
+    padding: 0 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .hero-bottom .btn-primary {
+    width: 100%;
+    padding: 20px 24px;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    margin-bottom: 0;
+  }
+  .hero-img-wrap {
+    aspect-ratio: 4/4.5;
+    max-width: 100%;
+    border-radius: 0;
+    margin-top: 0;
+  }
   .hero-premium-line { display: none; }
   
   .trust-bar {
