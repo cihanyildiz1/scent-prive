@@ -843,10 +843,29 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
    RESPONSIVE — MOBILE ≤ 640px
    ============================================ */
 @media (max-width: 640px) {
-  #navbar, #navbar.scrolled { padding: 20px 24px; }
+  /* ── Navbar: visa alla länkar på mobil ── */
+  #navbar, #navbar.scrolled { padding: 16px 20px; }
   #nav-logo-img { height: 30px; }
-  #nav-links { gap: 24px; }
-  .nav-link { display: none; }
+  .nav-inner { align-items: center; }
+  .nav-links {
+    gap: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-link {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+  .nav-cart-link {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
 
   /* ── Mobile Hero: CTA ovanför bild ── */
   #hero {
@@ -858,11 +877,12 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
       "bottom"
       "image";
   }
-  .hero-text { padding: 0 24px; margin-bottom: 28px; }
+  .hero-text { padding: 0 24px; margin-bottom: 24px; }
   .hero-title { font-size: clamp(38px, 12vw, 60px); margin-bottom: 8px; }
   .hero-sub { font-size: 16px; margin-bottom: 0; }
+
   .hero-bottom {
-    padding: 0 24px 32px;
+    padding: 0 24px 36px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -882,16 +902,26 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
     margin-top: 0;
   }
   .hero-premium-line { display: none; }
-  
+
+  /* ── Trust Bar: snygg och luftig ── */
   .trust-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 10px;
-    font-size: 10px;
-    margin-bottom: 24px;
-    color: #444;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 28px;
+    margin-bottom: 0;
+    border-top: 1px solid var(--border);
   }
-  .trust-bar .dot { display: block; color: var(--gold); }
+  .trust-bar li {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .trust-bar .dot { display: none; }
 
   #collection, #features, #identity, #reviews, #faq { padding: 80px 24px; padding-top: 100px; }
   .section-title { margin-bottom: 48px; }
@@ -912,3 +942,4 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   #product-detail { padding: 100px 24px 60px; }
   .pd-inner { gap: 40px; }
 }
+
