@@ -78,18 +78,35 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .btn-outline:hover { background: var(--black); color: var(--white); }
 
 /* ============================================
+   ANNOUNCEMENT BAR
+   ============================================ */
+#announce-bar {
+  background: var(--gold);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 24px;
+  font-family: var(--ff-sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 99;
+}
+
+/* ============================================
    HEADER / NAV
    ============================================ */
 #navbar {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 40px; left: 0; right: 0;
   z-index: 100;
-  padding: 28px 64px;
+  padding: 20px 64px;
   transition: padding var(--t), background var(--t), box-shadow var(--t);
 }
 #navbar.scrolled {
-  padding: 18px 64px;
-  background: rgba(250,250,248,0.95);
+  padding: 14px 64px;
+  background: rgba(250,250,248,0.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 var(--border);
@@ -101,11 +118,6 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   max-width: 1600px;
   margin: 0 auto;
 }
-#nav-logo-img {
-  height: 38px;
-  transition: opacity 0.2s;
-}
-#nav-logo-img:hover { opacity: 0.6; }
 .nav-logo-text {
   font-family: var(--ff-serif);
   font-size: 22px;
@@ -143,6 +155,121 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   transition: color 0.2s;
 }
 
+/* Hamburger – hidden on desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--black);
+  transition: transform 0.3s, opacity 0.3s;
+}
+/* Cart icon – hidden on desktop */
+.nav-cart-icon {
+  display: none;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--black);
+  padding: 4px;
+}
+.cart-icon-badge {
+  position: absolute;
+  top: -2px; right: -6px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 9px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-sans);
+}
+
+/* ============================================
+   MOBILE SLIDE-OUT MENU
+   ============================================ */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.mobile-menu.open {
+  pointer-events: all;
+  opacity: 1;
+}
+.mobile-menu-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+.mobile-menu-drawer {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 80%;
+  max-width: 320px;
+  background: var(--white);
+  padding: 56px 40px 48px;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+}
+.mobile-menu.open .mobile-menu-drawer {
+  transform: translateX(0);
+}
+.mobile-menu-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-size: 20px;
+  color: var(--gray);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+.mobile-menu-close:hover { color: var(--black); }
+.mobile-menu-logo {
+  font-family: var(--ff-serif);
+  font-size: 20px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  color: var(--black);
+}
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-menu-nav a {
+  font-family: var(--ff-sans);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--black);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.mobile-menu-nav a:hover { color: var(--gold); }
+
+
+
 /* ============================================
    HERO
    ============================================ */
@@ -169,6 +296,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   aspect-ratio: 4/5;
   overflow: hidden;
   border-radius: 4px;
+  position: relative;
 }
 .hero-img {
   width: 100%;
@@ -177,6 +305,11 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   transition: transform 1.4s var(--ease);
 }
 .hero-img-wrap:hover .hero-img { transform: scale(1.03); }
+
+/* CTA overlay on image – only shown on mobile */
+.hero-cta-overlay {
+  display: none;
+}
 
 .hero-title {
   font-family: var(--ff-serif);
@@ -843,103 +976,94 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
    RESPONSIVE — MOBILE ≤ 640px
    ============================================ */
 @media (max-width: 640px) {
-  /* ── Navbar: visa alla länkar på mobil ── */
-  #navbar, #navbar.scrolled { padding: 16px 20px; }
-  #nav-logo-img { height: 30px; }
-  .nav-inner { align-items: center; }
-  .nav-links {
-    gap: 20px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-link {
-    display: inline-block;
-    white-space: nowrap;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-  }
-  .nav-cart-link {
-    font-size: 10px;
-    letter-spacing: 0.14em;
+
+  /* ── Announce bar ── */
+  #announce-bar { font-size: 10px; padding: 9px 16px; }
+
+  /* ── Navbar: hamburger | logo | cart icon ── */
+  #navbar { top: 36px; padding: 14px 20px; }
+  #navbar.scrolled { top: 36px; padding: 12px 20px; }
+  .nav-inner { position: relative; justify-content: space-between; }
+
+  /* Show hamburger + cart icon */
+  .nav-hamburger { display: flex; }
+  .nav-cart-icon { display: flex; align-items: center; }
+
+  /* Hide desktop links */
+  .nav-links { display: none; }
+
+  /* Center logo absolutely */
+  .nav-logo-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 17px;
+    letter-spacing: 0.18em;
     white-space: nowrap;
   }
 
-  /* ── Mobile Hero: CTA ovanför bild ── */
+  /* ── Hero: full-width image with CTA overlaid ── */
   #hero {
-    padding: 110px 0px 60px;
+    padding: 76px 0 0;
     gap: 0;
     max-width: 100%;
-    grid-template-areas:
-      "text"
-      "bottom"
-      "image";
+    display: block;
   }
-  .hero-text { padding: 0 24px; margin-bottom: 24px; }
-  .hero-title { font-size: clamp(38px, 12vw, 60px); margin-bottom: 8px; }
-  .hero-sub { font-size: 16px; margin-bottom: 0; }
+  /* Hide title text + hero-bottom on mobile */
+  .hero-text { display: none; }
+  .hero-bottom { display: none; }
 
-  .hero-bottom {
-    padding: 0 24px 36px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-  .hero-bottom .btn-primary {
-    width: 100%;
-    padding: 20px 24px;
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    margin-bottom: 0;
-  }
+  /* Image fills full width, tall */
   .hero-img-wrap {
-    aspect-ratio: 4/4.5;
-    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 3/4;
     border-radius: 0;
-    margin-top: 0;
+    overflow: hidden;
+    position: relative;
   }
-  .hero-premium-line { display: none; }
+  .hero-img { transform: none; object-position: center; }
 
-  /* ── Trust Bar: snygg och luftig ── */
-  .trust-bar {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    margin-top: 28px;
-    margin-bottom: 0;
-    border-top: 1px solid var(--border);
-  }
-  .trust-bar li {
-    font-size: 11px;
-    letter-spacing: 0.14em;
+  /* CTA overlaid on image */
+  .hero-cta-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.92);
+    color: var(--black);
+    font-family: var(--ff-sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gray);
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-    text-align: center;
+    padding: 18px 48px;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: background 0.3s;
+    min-width: 220px;
   }
-  .trust-bar .dot { display: none; }
+  .hero-cta-overlay:hover { background: rgba(255,255,255,1); }
 
-  #collection, #features, #identity, #reviews, #faq { padding: 80px 24px; padding-top: 100px; }
-  .section-title { margin-bottom: 48px; }
+  /* ── Sections ── */
+  #collection, #features, #identity, #reviews, #faq { padding: 80px 24px; padding-top: 80px; }
+  .section-title { margin-bottom: 40px; }
   .products-grid { max-width: 100%; }
-
   .features-grid { grid-template-columns: 1fr; }
-
   .reviews-inner { grid-template-columns: 1fr; max-width: 100%; }
-
   #faq .faq-list { max-width: 100%; }
   .faq-q { font-size: 18px; }
 
+  /* ── Footer ── */
   #footer { padding: 80px 24px 48px; }
   .footer-top { flex-direction: column; gap: 20px; }
   .footer-tagline { font-size: 17px; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
 
+  /* ── Product pages ── */
   #product-detail { padding: 100px 24px 60px; }
   .pd-inner { gap: 40px; }
 }
-

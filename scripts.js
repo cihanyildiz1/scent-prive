@@ -33,10 +33,11 @@ function updateCartUI() {
   const cart = getCart();
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
-  // Update count badges
-  document.querySelectorAll('#cart-count').forEach(el => {
-    el.textContent = cart.reduce((s, i) => s + i.qty, 0);
-  });
+  // Update count badges (including mobile icon badge)
+  const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+  document.querySelectorAll('#cart-count').forEach(el => { el.textContent = totalQty; });
+  const iconBadge = document.getElementById('cart-count-icon');
+  if (iconBadge) iconBadge.textContent = totalQty;
 
   // Update panel
   const itemsEl = document.getElementById('cart-items');
@@ -91,8 +92,8 @@ function closeCart() {
 document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
 
-  // Open cart from header
-  document.querySelectorAll('#nav-cart').forEach(btn => {
+  // Open cart from header (desktop and mobile icon)
+  document.querySelectorAll('#nav-cart, #nav-cart-icon').forEach(btn => {
     btn.addEventListener('click', (e) => { e.preventDefault(); openCart(); });
   });
   // Close
@@ -100,6 +101,34 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeBtn) closeBtn.addEventListener('click', closeCart);
   const overlay = document.getElementById('cart-overlay');
   if (overlay) overlay.addEventListener('click', closeCart);
+
+  // Hamburger menu
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+  function openMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  if (hamburger) hamburger.addEventListener('click', openMobileMenu);
+  if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+  if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+  // Close mobile menu on link click
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+  }
 
   // Checkout button placeholder
   document.querySelectorAll('.cart-footer .btn-primary').forEach(btn => {
