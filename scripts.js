@@ -130,11 +130,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Checkout button placeholder
+  // ── Stripe Checkout ──────────────────────────────────────────────────────
   document.querySelectorAll('.cart-footer .btn-primary').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       e.preventDefault();
-      alert('Kassan är under uppbyggnad – snart kan du betala med Stripe här!');
+
+      const cart = getCart();
+      if (cart.length === 0) {
+        alert('Varukorgen är tom. Lägg till en produkt först!');
+        return;
+      }
+
+      // Show loading state
+      const originalText = btn.textContent;
+      btn.textContent = 'Laddar…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: cart }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+          throw new Error(data.error || 'Okänt fel');
+        }
+
+        // Redirect to Stripe Hosted Checkout
+        window.location.href = data.url;
+
+      } catch (err) {
+        console.error('Checkout error:', err);
+        // Visa exakt felmeddelande för enklare felsökning
+        alert('⚠️ Betalning misslyckades\n\nFelmeddelande: ' + err.message + '\n\nFörsök igen eller kontakta oss på Instagram @scentprive.se');
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
     });
   });
 

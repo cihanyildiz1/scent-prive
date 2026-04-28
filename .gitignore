@@ -1,0 +1,7 @@
+# ── Scent Privé .gitignore ──────────────────────────────
+node_modules/
+.env
+.netlify/
+*.log
+
+.vercel
