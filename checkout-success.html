@@ -200,12 +200,29 @@
     // Clear cart after successful payment
     localStorage.removeItem('scentprive_cart');
 
-    // Show session ID for reference
     const params = new URLSearchParams(window.location.search);
     const sessionId = params.get('session_id');
+
     if (sessionId) {
+      // Show order reference
       const el = document.getElementById('order-id-display');
-      if (el) el.textContent = 'Referens: ' + sessionId;
+      if (el) el.textContent = 'Ordernummer: #' + sessionId.slice(-8).toUpperCase();
+
+      // Send confirmation emails (customer + store)
+      fetch('/api/send-confirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId }),
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          console.log('Bekräftelsemejl skickade.');
+        } else {
+          console.warn('Mejl ej skickat:', data.error);
+        }
+      })
+      .catch(err => console.error('Bekräftelsemejl fel:', err));
     }
   </script>
 

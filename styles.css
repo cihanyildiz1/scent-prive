@@ -716,6 +716,56 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   font-size: 24px;
 }
 
+/* Payment badges in cart */
+.cart-payment-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.pay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 9px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  background: #fff;
+  white-space: nowrap;
+}
+.pay-badge.klarna {
+  color: #000;
+  background: #ffb3c7;
+  border-color: #ffb3c7;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+/* Klarna badge on product page */
+.pd-klarna-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 12px;
+}
+.pd-klarna-note .klarna-pill {
+  background: #ffb3c7;
+  color: #000;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+
 /* ============================================
    FOOTER
    ============================================ */
