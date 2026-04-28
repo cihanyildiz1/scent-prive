@@ -99,7 +99,6 @@ module.exports = async (req, res) => {
     console.log('siteUrl:', siteUrl, '| orderTotal:', orderTotal, '| items:', lineItems.length);
 
     const session = await stripe.checkout.sessions.create({
-      automatic_payment_methods: { enabled: true },
       line_items: lineItems,
       mode: 'payment',
       locale: 'sv',
