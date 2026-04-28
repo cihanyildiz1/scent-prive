@@ -9,6 +9,8 @@ const VALID_SIZES = {
   '12ml': 199,
 };
 
+const FREE_SHIPPING_THRESHOLD = 39900; // 399 kr i öre
+
 module.exports = async (req, res) => {
   // CORS-headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -31,7 +33,7 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: 'Varukorgen är tom.' });
     }
 
-    // Bygg Stripe-rader med validerade priser från servern (ignorerar klientens pris)
+    // Bygg Stripe-rader med validerade priser från servern
     const lineItems = [];
     for (const item of items) {
       const name = String(item.name || '').trim();
@@ -42,17 +44,15 @@ module.exports = async (req, res) => {
         return res.status(400).json({ error: 'Produktnamn saknas.' });
       }
 
-      const unitPrice = VALID_SIZES[size];
-      if (!unitPrice) {
-        return res.status(400).json({ error: `Ogiltig storlek: "${size}". Tillåtna: 6ml, 12ml.` });
-      }
+      // Fallback till 6ml om storleken inte känns igen
+      const unitPrice = VALID_SIZES[size] || VALID_SIZES['6ml'];
 
       lineItems.push({
         price_data: {
           currency: 'sek',
           product_data: {
             name: name,
-            description: `Roll-on doftolja · ${size}`,
+            description: `Roll-on doftolja · ${size || '6ml'}`,
           },
           unit_amount: unitPrice * 100, // kr → öre
         },
@@ -60,67 +60,46 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Bygg korrekt site-URL
-    // SITE_URL = den du sätter manuellt på Vercel (t.ex. https://scent-prive.vercel.app)
-    // VERCEL_URL sätts automatiskt av Vercel per deployment
+    // Beräkna ordervärde för frakt
+    const orderTotal = lineItems.reduce(
+      (sum, item) => sum + item.price_data.unit_amount * item.quantity, 0
+    );
+
+    const shippingOptions = orderTotal >= FREE_SHIPPING_THRESHOLD
+      ? [{
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: { amount: 0, currency: 'sek' },
+            display_name: 'Standardfrakt (fri över 399 kr)',
+            delivery_estimate: {
+              minimum: { unit: 'business_day', value: 1 },
+              maximum: { unit: 'business_day', value: 3 },
+            },
+          },
+        }]
+      : [{
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: { amount: 4900, currency: 'sek' },
+            display_name: 'Standardfrakt',
+            delivery_estimate: {
+              minimum: { unit: 'business_day', value: 1 },
+              maximum: { unit: 'business_day', value: 3 },
+            },
+          },
+        }];
+
+    // Bygg site-URL
     let siteUrl = process.env.SITE_URL;
     if (!siteUrl && process.env.VERCEL_URL) {
       siteUrl = `https://${process.env.VERCEL_URL}`;
     }
-    if (!siteUrl) {
-      siteUrl = 'http://localhost:3000';
-    }
+    if (!siteUrl) siteUrl = 'http://localhost:3000';
 
-    console.log('Creating Stripe session with siteUrl:', siteUrl);
-    console.log('Items:', JSON.stringify(lineItems));
+    console.log('siteUrl:', siteUrl, '| orderTotal:', orderTotal, '| items:', lineItems.length);
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'klarna'],
-      line_items: lineItems,
-      mode: 'payment',
-      locale: 'sv',
-      billing_address_collection: 'auto',
-
-      shipping_address_collection: {
-        allowed_countries: ['SE'],
-      },
-
-    // Beräkna ordervärde för att avgöra fraktkostnad
-    const orderTotal = lineItems.reduce((sum, item) => {
-      return sum + (item.price_data.unit_amount * item.quantity);
-    }, 0); // i öre
-    const FREE_SHIPPING_THRESHOLD = 39900; // 399 kr i öre
-
-    const shippingOptions = orderTotal >= FREE_SHIPPING_THRESHOLD
-      ? [
-          {
-            shipping_rate_data: {
-              type: 'fixed_amount',
-              fixed_amount: { amount: 0, currency: 'sek' },
-              display_name: 'Standardfrakt (fri över 399 kr)',
-              delivery_estimate: {
-                minimum: { unit: 'business_day', value: 1 },
-                maximum: { unit: 'business_day', value: 3 },
-              },
-            },
-          },
-        ]
-      : [
-          {
-            shipping_rate_data: {
-              type: 'fixed_amount',
-              fixed_amount: { amount: 4900, currency: 'sek' },
-              display_name: 'Standardfrakt',
-              delivery_estimate: {
-                minimum: { unit: 'business_day', value: 1 },
-                maximum: { unit: 'business_day', value: 3 },
-              },
-            },
-          },
-        ];
-
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'klarna'],
+      automatic_payment_methods: { enabled: true },
       line_items: lineItems,
       mode: 'payment',
       locale: 'sv',
@@ -139,12 +118,9 @@ module.exports = async (req, res) => {
     return res.status(200).json({ url: session.url });
 
   } catch (err) {
-    // Logga hela felet på servern (syns i Vercel Logs)
     console.error('Stripe error type:', err.type);
     console.error('Stripe error message:', err.message);
-    console.error('Full error:', JSON.stringify(err, null, 2));
 
-    // Ge användaren ett meningsfullt felmeddelande
     if (err.type === 'StripeAuthenticationError') {
       return res.status(500).json({ error: 'Betalningsinställningar saknas. Kontakta support.' });
     }
