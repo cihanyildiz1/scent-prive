@@ -5,7 +5,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Tillåtna storlekar och deras priser (i kr)
 const VALID_SIZES = {
-  '6ml':  1,  // TEMP TEST - ändra tillbaka till 129 efter testet!
+  '6ml':  129,
   '12ml': 199,
 };
 
@@ -80,7 +80,7 @@ module.exports = async (req, res) => {
       : [{
           shipping_rate_data: {
             type: 'fixed_amount',
-            fixed_amount: { amount: 100, currency: 'sek' }, // TEMP TEST FRAKT 1 kr (var 4900)
+            fixed_amount: { amount: 4900, currency: 'sek' },
             display_name: 'Standardfrakt',
             delivery_estimate: {
               minimum: { unit: 'business_day', value: 1 },
