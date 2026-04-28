@@ -225,16 +225,25 @@ const navbar = document.getElementById('navbar');
 if (navbar) {
   const hasAnnounce = document.body.classList.contains('has-announce');
   if (!hasAnnounce) {
-    // Kollektion, produktsidor etc — navbar alltid synlig med bakgrund
     navbar.classList.add('scrolled');
   }
+
+  let prevScrollY = window.scrollY;
   window.addEventListener('scroll', () => {
+    const currentY = window.scrollY;
+
     if (hasAnnounce) {
-      // Startsidan — transparent tills announce bar scrollats förbi
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
+      navbar.classList.toggle('scrolled', currentY > 40);
     } else {
       navbar.classList.add('scrolled');
+      // Smart navbar: göm vid scroll ner, visa vid scroll upp
+      if (currentY > prevScrollY && currentY > 80) {
+        navbar.classList.add('navbar-hidden');
+      } else {
+        navbar.classList.remove('navbar-hidden');
+      }
     }
+    prevScrollY = currentY;
   }, { passive: true });
 }
 

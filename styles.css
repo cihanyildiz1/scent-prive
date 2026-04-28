@@ -102,7 +102,10 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 20px 64px;
-  transition: padding var(--t), background var(--t), box-shadow var(--t);
+  transition: padding var(--t), background var(--t), box-shadow var(--t), transform 0.3s var(--ease);
+}
+#navbar.navbar-hidden {
+  transform: translateY(-100%);
 }
 body.has-announce #navbar {
   top: 40px;

@@ -5,7 +5,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Tillåtna storlekar och deras priser (i kr)
 const VALID_SIZES = {
-  '6ml':  129,
+  '6ml':  1,  // TEMP TEST - ändra tillbaka till 129 efter köp!
   '12ml': 199,
 };
 
