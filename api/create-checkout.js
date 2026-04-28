@@ -85,30 +85,52 @@ module.exports = async (req, res) => {
         allowed_countries: ['SE'],
       },
 
-      shipping_options: [
-        {
-          shipping_rate_data: {
-            type: 'fixed_amount',
-            fixed_amount: { amount: 0, currency: 'sek' },
-            display_name: 'Standardfrakt (fri)',
-            delivery_estimate: {
-              minimum: { unit: 'business_day', value: 1 },
-              maximum: { unit: 'business_day', value: 3 },
+    // Beräkna ordervärde för att avgöra fraktkostnad
+    const orderTotal = lineItems.reduce((sum, item) => {
+      return sum + (item.price_data.unit_amount * item.quantity);
+    }, 0); // i öre
+    const FREE_SHIPPING_THRESHOLD = 39900; // 399 kr i öre
+
+    const shippingOptions = orderTotal >= FREE_SHIPPING_THRESHOLD
+      ? [
+          {
+            shipping_rate_data: {
+              type: 'fixed_amount',
+              fixed_amount: { amount: 0, currency: 'sek' },
+              display_name: 'Standardfrakt (fri över 399 kr)',
+              delivery_estimate: {
+                minimum: { unit: 'business_day', value: 1 },
+                maximum: { unit: 'business_day', value: 3 },
+              },
             },
           },
-        },
-        {
-          shipping_rate_data: {
-            type: 'fixed_amount',
-            fixed_amount: { amount: 4900, currency: 'sek' },
-            display_name: 'Expressfrakt',
-            delivery_estimate: {
-              minimum: { unit: 'business_day', value: 1 },
-              maximum: { unit: 'business_day', value: 1 },
+        ]
+      : [
+          {
+            shipping_rate_data: {
+              type: 'fixed_amount',
+              fixed_amount: { amount: 4900, currency: 'sek' },
+              display_name: 'Standardfrakt',
+              delivery_estimate: {
+                minimum: { unit: 'business_day', value: 1 },
+                maximum: { unit: 'business_day', value: 3 },
+              },
             },
           },
-        },
-      ],
+        ];
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card', 'klarna'],
+      line_items: lineItems,
+      mode: 'payment',
+      locale: 'sv',
+      billing_address_collection: 'auto',
+
+      shipping_address_collection: {
+        allowed_countries: ['SE'],
+      },
+
+      shipping_options: shippingOptions,
 
       success_url: `${siteUrl}/checkout-success.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url:  `${siteUrl}/kollektion.html`,
