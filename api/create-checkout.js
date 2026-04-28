@@ -89,8 +89,14 @@ module.exports = async (req, res) => {
           },
         }];
 
-    // Bygg site-URL
+    // Bygg site-URL — använd origin-headern från webbläsaren (mest tillförlitlig)
     let siteUrl = process.env.SITE_URL;
+    if (!siteUrl) {
+      const origin = req.headers.origin;
+      if (origin && origin !== 'null' && origin.startsWith('http')) {
+        siteUrl = origin;
+      }
+    }
     if (!siteUrl && process.env.VERCEL_URL) {
       siteUrl = `https://${process.env.VERCEL_URL}`;
     }

@@ -91,7 +91,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   text-transform: uppercase;
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 99;
+  z-index: 101; /* above navbar */
 }
 
 /* ============================================
@@ -99,10 +99,13 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
    ============================================ */
 #navbar {
   position: fixed;
-  top: 40px; left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 20px 64px;
   transition: padding var(--t), background var(--t), box-shadow var(--t);
+}
+body.has-announce #navbar {
+  top: 40px;
 }
 #navbar.scrolled {
   padding: 14px 64px;
