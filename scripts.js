@@ -223,8 +223,18 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================== */
 const navbar = document.getElementById('navbar');
 if (navbar) {
+  const hasAnnounce = document.body.classList.contains('has-announce');
+  if (!hasAnnounce) {
+    // Kollektion, produktsidor etc — navbar alltid synlig med bakgrund
+    navbar.classList.add('scrolled');
+  }
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    if (hasAnnounce) {
+      // Startsidan — transparent tills announce bar scrollats förbi
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    } else {
+      navbar.classList.add('scrolled');
+    }
   }, { passive: true });
 }
 

@@ -107,6 +107,14 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 body.has-announce #navbar {
   top: 40px;
 }
+/* Alla sidor UTOM startsidan — navbar alltid solid (CSS-fallback) */
+body:not(.has-announce) #navbar {
+  background: rgba(250,250,248,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+  padding: 14px 64px;
+}
 #navbar.scrolled {
   padding: 14px 64px;
   background: rgba(250,250,248,0.97);
