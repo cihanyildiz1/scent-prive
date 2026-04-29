@@ -147,13 +147,21 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.disabled = true;
 
       try {
-        // TILLFÄLLIG SPÄRR FÖR KASSAN (Lanseras snart)
-        alert('Scent Privé öppnar snart! ✨\n\nVi tar inte emot riktiga beställningar just nu, men du är välkommen att titta runt på sidan. Följ oss på Instagram @scentprive.se för lanseringsdatum!');
-        
-        // Återställ knappen
-        btn.textContent = originalText;
-        btn.disabled = false;
-        
+        const res = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: cart }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+          throw new Error(data.error || 'Okänt fel');
+        }
+
+        // Redirect to Stripe Hosted Checkout
+        window.location.href = data.url;
+
       } catch (err) {
         console.error('Checkout error:', err);
         // Visa exakt felmeddelande för enklare felsökning
