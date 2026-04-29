@@ -1075,8 +1075,11 @@ body:not(.has-announce) #navbar {
   #announce-bar { font-size: 10px; padding: 9px 16px; }
 
   /* ── Navbar: hamburger | logo | cart icon ── */
-  #navbar { top: 36px; padding: 14px 20px; }
-  #navbar.scrolled { top: 36px; padding: 12px 20px; }
+  #navbar { top: 0; padding: 14px 20px; }
+  #navbar.scrolled { top: 0; padding: 12px 20px; }
+  /* Startsidan har announcebar — skjut ner navbaren */
+  body.has-announce #navbar,
+  body.has-announce #navbar.scrolled { top: 36px; }
   .nav-inner { position: relative; justify-content: space-between; }
 
   /* Show hamburger + cart icon */
