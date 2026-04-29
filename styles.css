@@ -105,7 +105,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   transition: padding var(--t), background var(--t), box-shadow var(--t), transform 0.3s var(--ease);
 }
 #navbar.navbar-hidden {
-  transform: translateY(-100%);
+  /* Inaktiverad - navbaren ska alltid synas */
+  transform: none;
 }
 body.has-announce #navbar {
   top: 40px;
