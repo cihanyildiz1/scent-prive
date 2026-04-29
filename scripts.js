@@ -29,6 +29,16 @@ function removeFromCart(index) {
   saveCart(cart);
   updateCartUI();
 }
+function updateQty(index, delta) {
+  const cart = getCart();
+  if (!cart[index]) return;
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+  saveCart(cart);
+  updateCartUI();
+}
 function updateCartUI() {
   const cart = getCart();
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
@@ -54,15 +64,26 @@ function updateCartUI() {
           <span>${item.size}</span>
         </div>
         <div class="cart-item-right">
-          <span>${item.price * item.qty} kr</span>
+          <div class="cart-qty-controls">
+            <button class="cart-qty-btn cart-qty-minus" data-index="${idx}" aria-label="Minska">−</button>
+            <span class="cart-qty-num">${item.qty}</span>
+            <button class="cart-qty-btn cart-qty-plus" data-index="${idx}" aria-label="Öka">+</button>
+          </div>
+          <span class="cart-item-price">${item.price * item.qty} kr</span>
           <button class="cart-remove" data-index="${idx}" aria-label="Ta bort">✕</button>
         </div>
       </div>
     `).join('');
 
-    // Remove buttons
+    // Remove & qty buttons
     itemsEl.querySelectorAll('.cart-remove').forEach(btn => {
       btn.addEventListener('click', () => removeFromCart(Number(btn.dataset.index)));
+    });
+    itemsEl.querySelectorAll('.cart-qty-minus').forEach(btn => {
+      btn.addEventListener('click', () => updateQty(Number(btn.dataset.index), -1));
+    });
+    itemsEl.querySelectorAll('.cart-qty-plus').forEach(btn => {
+      btn.addEventListener('click', () => updateQty(Number(btn.dataset.index), +1));
     });
   }
 
@@ -159,8 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error(data.error || 'Okänt fel');
         }
 
-        // Redirect to Stripe Hosted Checkout
-        window.location.href = data.url;
+        // Redirect to Stripe Hosted Checkout (replace förhindrar back-loop)
+        window.location.replace(data.url);
 
       } catch (err) {
         console.error('Checkout error:', err);
