@@ -16,6 +16,9 @@
 
   <nav id="navbar" class="scrolled">
     <div class="nav-inner">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Öppna meny">
+        <span></span><span></span><span></span>
+      </button>
       <a href="index.html" class="nav-logo-text">SCENT PRIVÉ</a>
       <div class="nav-links">
         <a href="kollektion.html" class="nav-link active">Kollektion</a>
@@ -23,8 +26,27 @@
         <a href="https://www.instagram.com/scentprive.se" class="nav-link" target="_blank" rel="noopener">Instagram</a>
         <button class="nav-cart-link" id="nav-cart" aria-label="Öppna varukorg">Varukorg (<span id="cart-count">0</span>)</button>
       </div>
+      <button class="nav-cart-icon" id="nav-cart-icon" aria-label="Varukorg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-icon-badge" id="cart-count-icon">0</span>
+      </button>
     </div>
   </nav>
+
+  <!-- ─── MOBILE MENU ─── -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    <div class="mobile-menu-drawer">
+      <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Stäng meny">✕</button>
+      <p class="mobile-menu-logo">SCENT PRIVÉ</p>
+      <nav class="mobile-menu-nav">
+        <a href="kollektion.html">Kollektion</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/scentprive.se" target="_blank" rel="noopener">Instagram</a>
+        <a href="index.html#collection">Dofter</a>
+      </nav>
+    </div>
+  </div>
 
   <main>
     <section id="collection" style="padding-top: 120px;">
@@ -193,6 +215,7 @@
   <script src="scripts.js"></script>
 </body>
 </html>
+
 
 
 

@@ -147,9 +147,27 @@
 
   <nav id="navbar" class="scrolled">
     <div class="nav-inner">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Öppna meny">
+        <span></span><span></span><span></span>
+      </button>
       <a href="index.html" class="nav-logo-text">SCENT PRIVÉ</a>
     </div>
   </nav>
+
+  <!-- ─── MOBILE MENU ─── -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    <div class="mobile-menu-drawer">
+      <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Stäng meny">✕</button>
+      <p class="mobile-menu-logo">SCENT PRIVÉ</p>
+      <nav class="mobile-menu-nav">
+        <a href="kollektion.html">Kollektion</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/scentprive.se" target="_blank" rel="noopener">Instagram</a>
+        <a href="index.html#collection">Dofter</a>
+      </nav>
+    </div>
+  </div>
 
   <main class="success-page">
 
@@ -228,5 +246,6 @@
 
 </body>
 </html>
+
 
 
