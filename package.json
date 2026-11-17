@@ -4,16 +4,12 @@
   "description": "Scent Privé – e-commerce parfymoljor",
   "private": true,
   "scripts": {
-    "dev": "netlify dev",
     "build": "echo 'Static site – no build step needed'"
   },
   "dependencies": {
     "stripe": "^14.0.0"
   },
-  "devDependencies": {
-    "netlify-cli": "^17.0.0"
-  },
   "engines": {
-    "node": ">=18"
+    "node": "20.x"
   }
 }
