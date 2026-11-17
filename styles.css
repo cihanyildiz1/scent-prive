@@ -947,6 +947,13 @@ body:not(.has-announce) #navbar {
   transition: border-color var(--t), color var(--t);
 }
 .pd-radio input:checked + span { border-color: var(--black); color: var(--black); }
+.pd-radio.is-soldout { cursor: not-allowed; }
+.pd-radio input:disabled + span {
+  opacity: 0.55;
+  background: repeating-linear-gradient(135deg, transparent 0 6px, rgba(0,0,0,0.035) 6px 12px);
+  color: var(--gray);
+  cursor: not-allowed;
+}
 .pd-btn { width: 100%; margin-bottom: 48px; }
 
 /* Quantity selector */

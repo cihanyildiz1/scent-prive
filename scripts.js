@@ -3,8 +3,16 @@
 /* ==========================
    CART SYSTEM (localStorage)
    ========================== */
+const SIZE_PRICES = { '6ml': 109, '12ml': 169 };
+const SOLD_OUT_SIZES = ['12ml']; // ta bort från listan när storleken finns i lager igen
 function getCart() {
-  try { return JSON.parse(localStorage.getItem('scentprive_cart')) || []; }
+  try {
+    const raw = JSON.parse(localStorage.getItem('scentprive_cart')) || [];
+    // Uppdatera priser från prislistan och släng slutsålda storlekar (gamla sparade varukorgar)
+    return raw
+      .filter(i => !SOLD_OUT_SIZES.includes(i.size))
+      .map(i => (SIZE_PRICES[i.size] ? { ...i, price: SIZE_PRICES[i.size] } : i));
+  }
   catch { return []; }
 }
 function saveCart(cart) {

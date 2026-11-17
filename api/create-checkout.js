@@ -5,9 +5,12 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Tillåtna storlekar och deras priser (i kr)
 const VALID_SIZES = {
-  '6ml':  129,
-  '12ml': 199,
+  '6ml':  109,
+  '12ml': 169,
 };
+
+// Slutsålda storlekar — ta bort från listan när de finns i lager igen
+const SOLD_OUT_SIZES = ['12ml'];
 
 const FREE_SHIPPING_THRESHOLD = 39900; // 399 kr i öre
 
@@ -42,6 +45,10 @@ module.exports = async (req, res) => {
 
       if (!name) {
         return res.status(400).json({ error: 'Produktnamn saknas.' });
+      }
+
+      if (SOLD_OUT_SIZES.includes(size)) {
+        return res.status(400).json({ error: `${name} (${size}) är slutsåld. Ta bort den från varukorgen och försök igen.` });
       }
 
       // Fallback till 6ml om storleken inte känns igen

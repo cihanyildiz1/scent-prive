@@ -1,35 +1,35 @@
 $products = @(
   @{
     num = "01"; name = "Doft 01"; tagline = "En doft som märks."
-    price6 = "129"; price12 = "199"
+    price6 = "109"; price12 = "169"
     img = "collection.png"
     desc = "En doft som lämnar avtryck. Varje flaska är noggrant framtagen för att ge dig en djup, långvarig upplevelse du faktiskt märker av."
     notes_top = "Bergamott, Svartpeppar"; notes_heart = "Ros, Cederträ"; notes_base = "Mysk, Amber"
   },
   @{
     num = "02"; name = "Doft 02"; tagline = "Diskret, men kraftfull."
-    price6 = "129"; price12 = "199"
+    price6 = "109"; price12 = "169"
     img = "hero-mockup.png"
     desc = "En doft som talar för sig självt. Skapad för dig som väljer kvalitet framför quantitet."
     notes_top = "Cedarwood, Citrus"; notes_heart = "Sandel, Patchouli"; notes_base = "Oud, Mysk"
   },
   @{
     num = "03"; name = "Doft 03"; tagline = "Inte för alla."
-    price6 = "129"; price12 = "199"
+    price6 = "109"; price12 = "169"
     img = "lifestyle.png"
     desc = "Skapad för dem som vet vad de vill ha. En unik komposition med bestående intryck."
     notes_top = "Jasmin, Iris"; notes_heart = "Rosenved, Amber"; notes_base = "Vanilj, Mysk"
   },
   @{
     num = "04"; name = "Doft 04"; tagline = "En doft som stannar kvar."
-    price6 = "129"; price12 = "199"
+    price6 = "109"; price12 = "169"
     img = "collection.png"
     desc = "En djup och varm doft som tar med dig på en resa. Perfekt för dem som söker något bortom det vanliga."
     notes_top = "Kardemumma, Peppar"; notes_heart = "Amber, Leather"; notes_base = "Bensoin, Mysk"
   },
   @{
     num = "05"; name = "Doft 05"; tagline = "Rätt närvarokraft."
-    price6 = "129"; price12 = "199"
+    price6 = "109"; price12 = "169"
     img = "hero-mockup.png"
     desc = "Närvaro utan att ta plats. En balanserad doft som passar alla tillfällen – från kontoret till kvällen."
     notes_top = "Citrus, Gurkmeja"; notes_heart = "Sandel, Vetiver"; notes_base = "Oud, Mysk"

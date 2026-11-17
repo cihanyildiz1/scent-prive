@@ -8,12 +8,12 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // Maps product names + sizes to their allowed prices in SEK.
 // This prevents users from manipulating prices on the frontend.
 const ALLOWED_PRICES = {
-  'Scent Imagination':  { '6ml': 129, '12ml': 199 },
-  'Scent Madawi Gold':  { '6ml': 129, '12ml': 199 },
-  'Scent 2nd Wife':     { '6ml': 129, '12ml': 199 },
-  'Scent Golden Dust':  { '6ml': 129, '12ml': 199 },
-  'Scent Althair':      { '6ml': 129, '12ml': 199 },
-  'Scent Coco Vanillia':{ '6ml': 129, '12ml': 199 },
+  'Scent Imagination':  { '6ml': 109, '12ml': 169 },
+  'Scent Madawi Gold':  { '6ml': 109, '12ml': 169 },
+  'Scent 2nd Wife':     { '6ml': 109, '12ml': 169 },
+  'Scent Golden Dust':  { '6ml': 109, '12ml': 169 },
+  'Scent Althair':      { '6ml': 109, '12ml': 169 },
+  'Scent Coco Vanillia':{ '6ml': 109, '12ml': 169 },
 };
 
 exports.handler = async (event) => {
